@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  width: 1920px;
+  height: 1080px;
+}
+.skills {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills h1 {
+  color: red;
+  font-size: 64px;
+  font-family: "Rowdies", cursive;
+  margin: 110px 0 115px 20px;
+}
+select {
+  width: 455px;
+  height: 54px;
+  border: 1px solid #454545;
+  margin-bottom: 38px;
+  padding: 10px;
+}
+input {
+  width: 455px;
+  height: 54px;
+  border: 1px solid #454545;
+  margin-bottom: 38px;
+}
+.info {
+  flex: 1;
+  background-color: black;
+}
+
+.info h2 {
+  color: red;
+  font-size: 64px;
+  font-family: "Rowdies", cursive;
+  margin: 110px 0 0 175px;
+}
+.info p {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  margin: 150px 200px 0 175px;
+  text-align: left;
+  line-height: 50px;
+}

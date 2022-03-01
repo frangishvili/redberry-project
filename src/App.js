@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
-import Welcome from "./pages/Welcome";
+import Covid from "./pages/Covid";
+// import TechSkills from "./pages/TechSkills";
+// import PersonalInfo from "./pages/PersonalInfo";
+// import Welcome from "./pages/Welcome";
 
 function App() {
   return (
     <div>
-      <Welcome />
+      <Covid />
     </div>
   );
 }
