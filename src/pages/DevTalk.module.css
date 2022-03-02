@@ -1,57 +1,34 @@
 .container {
   display: flex;
   width: 1920px;
-  height: 1380px;
+  height: 1080px;
   border: 1px solid black;
 }
-p {
-  font-size: 18px;
-  font-family: "Montserrat", sans-serif;
-  margin-top: 50px;
-}
-.covidInfo {
+.devTalks {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.covidInfo h1 {
+.devTalks h1 {
   color: red;
   font-size: 64px;
   font-family: "Rowdies", cursive;
-  margin: 110px 0 105px 20px;
-  text-align: center;
+  margin: 110px 0 115px 20px;
 }
-.questions__container {
-  margin-left: 165px;
-}
-.radio_btn {
-  display: flex;
-  margin-top: 30px;
-}
-.radio__input {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  display: block;
-}
-
-.date__input {
+select {
   width: 455px;
   height: 54px;
-  margin-top: 30px;
   border: 1px solid #454545;
+  margin-bottom: 38px;
   padding: 10px;
 }
-.input__wrapper {
-  position: relative;
-}
-.calendar__img {
-  position: absolute;
-  top: 47px;
-  right: 44.52%;
-  width: 15px;
-  height: 15px;
+input {
+  width: 455px;
+  height: 54px;
+  border: 1px solid #454545;
+  margin-bottom: 38px;
 }
 .info {
   flex: 1;
