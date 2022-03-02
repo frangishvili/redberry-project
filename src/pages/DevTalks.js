@@ -7,6 +7,34 @@ const DevTalks = () => {
       <div className={styles.container}>
         <div className={styles.devTalks}>
           <h1>What about you?</h1>
+          <div className={styles.questions__container}>
+            <p>Would you attend Devtalks and maybe also organize your own?</p>
+
+            <div className={styles.radio_btn}>
+              <input
+                type="radio"
+                name="radio"
+                className={styles.radio__input}
+              />
+              <label>Yes</label>
+            </div>
+            <div className={styles.radio_btn}>
+              <input
+                type="radio"
+                name="radio"
+                className={styles.radio__input}
+              />
+              <label>No</label>
+            </div>
+
+            <p>What would you speak about at Devtalk?</p>
+
+            <textarea className={styles.textarea1}>I would...</textarea>
+
+            <p>Tell us something special</p>
+
+            <textarea className={styles.textarea2}>I...</textarea>
+          </div>
         </div>
         <div className={styles.info}>
           <h2>Redberrian Insights</h2>

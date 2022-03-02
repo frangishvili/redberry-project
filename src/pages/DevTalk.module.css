@@ -4,6 +4,11 @@
   height: 1080px;
   border: 1px solid black;
 }
+p {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 50px;
+}
 .devTalks {
   flex: 1;
   display: flex;
@@ -15,21 +20,37 @@
   color: red;
   font-size: 64px;
   font-family: "Rowdies", cursive;
-  margin: 110px 0 115px 20px;
+  margin: 100px 0 115px 20px;
 }
-select {
-  width: 455px;
-  height: 54px;
-  border: 1px solid #454545;
-  margin-bottom: 38px;
-  padding: 10px;
+.questions__container {
+  /* margin-left: 100px; */
 }
-input {
-  width: 455px;
-  height: 54px;
-  border: 1px solid #454545;
-  margin-bottom: 38px;
+
+.radio_btn {
+  display: flex;
+  margin-top: 30px;
 }
+.radio__input {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+}
+.textarea1 {
+  width: 535px;
+  height: 122px;
+  margin-top: 30px;
+  padding: 30px;
+  resize: none;
+}
+.textarea2 {
+  width: 535px;
+  height: 89px;
+  margin-top: 30px;
+  padding: 30px;
+  resize: none;
+}
+
 .info {
   flex: 1;
   background-color: black;
@@ -39,7 +60,7 @@ input {
   color: red;
   font-size: 64px;
   font-family: "Rowdies", cursive;
-  margin: 110px 0 0 175px;
+  margin: 100px 0 0 175px;
 }
 .info p {
   color: #ffffff;
