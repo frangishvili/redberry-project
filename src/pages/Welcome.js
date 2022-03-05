@@ -1,26 +1,19 @@
 import React from "react";
-// import TechSkills from "./TechSkills";
+import { Link } from "react-router-dom";
 import styles from "./Welcome.module.css";
-import img from "../assets/rocketman.png";
 
 function Welcome() {
-  // const [secondPage, setSecondPage] = useState(false);
-
-  // const changeHandler = () => {
-  //   setSecondPage(true);
-  // };
-  // console.log(secondPage);
-
-  // secondPage && <TechSkills />;
   return (
     <>
       <div className={styles.container}>
         <h1 className={styles.title}>Welcome Rocketeer!</h1>
-        <button className={styles.button}>Start Questionnaire</button>
-        <a className={styles.aplications__link} href="/">
+        <Link className={styles.link} to="/personal-info">
+          <button className={styles.button}>Start Questionnaire</button>{" "}
+        </Link>
+        <Link className={styles.aplications__link} to="/applications">
           Submitted Applications
-        </a>
-        <img src={img} alt="rocketman img" />
+        </Link>
+        <img src="/assets/rocketman.png" alt="rocketman img" />
       </div>
     </>
   );

@@ -1,18 +1,108 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import SkillsList from "../Components/SkillsList.js";
 import styles from "./TechSkills.module.css";
 
 const TechSkills = () => {
+  const [data, setData] = useState([]);
+  const [language, setLanguage] = useState("");
+  const [experience, setExperience] = useState("");
+  const [skills, setSkills] = useState([]);
+
+  const getUsers = async () => {
+    const response = await fetch("https://bootcamp-2022.devtest.ge/api/skills");
+    const result = await response.json();
+    setData(result);
+  };
+  useEffect(() => {
+    getUsers();
+  }, []);
+  const langChangeHandler = (event) => {
+    setLanguage(() => event.target.value);
+    localStorage.setItem("skill", event.target.value);
+  };
+
+  const expChangeHandler = (event) => {
+    setExperience(event.target.value);
+    localStorage.setItem("experience", event.target.value);
+  };
+
+  const addSkill = () => {
+    if (language !== "") {
+      const newSkill = {
+        language,
+        experience,
+        id: Math.trunc(Math.random() * 20000),
+      };
+
+      setSkills([newSkill, ...skills]);
+      setLanguage("");
+      setExperience("");
+    }
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    addSkill();
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.skills}>
+      <form onSubmit={submitHandler} className={styles.skills}>
         <h1>Tell us about your skills</h1>
-        <select className="select">
-          <option value="all todos">Skills</option>
-          <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
+        <select
+          onChange={langChangeHandler}
+          value={language}
+          className="select"
+        >
+          <option value="">Skills</option>
+          {data.map((item) => (
+            <option value={item.title} key={item.id}>
+              {item.title}
+            </option>
+          ))}
         </select>
-        <input type="text" placeholder="Experience Duration in Years" />
-      </div>
+        <input
+          type="text"
+          placeholder="Experience Duration in Years"
+          onChange={expChangeHandler}
+          value={experience}
+        />
+        <button
+          type="submit"
+          onClick={submitHandler}
+          className={styles.add__btn}
+        >
+          Add Programming Language
+        </button>
+        <div className={styles.skills_container}>
+          <SkillsList
+            language={language}
+            setLanguage={setLanguage}
+            experience={experience}
+            setExperience={setExperience}
+            skills={skills}
+            setSkills={setSkills}
+          />
+        </div>
+        <Link to="/personal-info"></Link>
+        <div className={styles.pagination}>
+          <Link to="/personal-info">
+            <img src="/assets/Previous.png" alt=" arrow img" />
+          </Link>
+          <img src="/assets/Ellipse1.png" alt="  img" />
+          <img src="/assets/Ellipse1.png" alt="  img" />
+          <img src="/assets/Ellipse2.png" alt="  img" />
+          <img src="/assets/Ellipse2.png" alt="  img" />
+          <img src="/assets/Ellipse2.png" alt="  img" />
+          <Link to="/covid-info">
+            <button className={styles.right_arrow}>
+              <img src="/assets/Next.png" alt=" arrow img" />
+            </button>
+          </Link>
+        </div>
+      </form>
+
       <div className={styles.info}>
         <h2>A bit about our battles</h2>
         <p>

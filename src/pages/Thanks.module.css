@@ -1,0 +1,14 @@
+.container {
+  background-color: black;
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: red;
+}
+.title {
+  font-size: 96px;
+  font-family: "Rowdies", cursive;
+  margin-top: 500px;
+}

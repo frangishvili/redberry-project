@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  width: 447px;
+  height: 48px;
+  margin-bottom: 17px;
+}
+.language {
+  margin-left: 15px;
+}
+.delete__icon {
+  margin-right: 15px;
+}

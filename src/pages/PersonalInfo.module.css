@@ -2,9 +2,15 @@
   display: flex;
   width: 1920px;
   height: 1080px;
+  border: 1px solid black;
 }
 .personalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
+}
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,12 +26,30 @@
   font-family: "Rowdies", cursive;
   margin: 110px 0 115px 175px;
 }
-input {
+.input {
   width: 455px;
   height: 54px;
-  margin-bottom: 38px;
   border: 1px solid #454545;
   padding: 10px;
+}
+.error {
+  font-size: 14px;
+  font-style: italic;
+  color: red;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  height: 23px;
+  margin-top: 175px;
+}
+.left_arrow {
+  cursor: pointer;
+}
+.right_arrow {
+  cursor: pointer;
+  border: none;
 }
 
 .info h2 {

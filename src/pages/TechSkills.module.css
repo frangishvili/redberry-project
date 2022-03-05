@@ -2,10 +2,12 @@
   display: flex;
   width: 1920px;
   height: 1080px;
+  border: 1px solid black;
 }
 .skills {
   flex: 1;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
 }
@@ -28,7 +30,34 @@ input {
   height: 54px;
   border: 1px solid #454545;
   margin-bottom: 38px;
+  padding: 10px;
+  outline: none;
 }
+.add__btn {
+  width: 201px;
+  height: 31px;
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  margin: 0 0 56px 248px;
+}
+.skills_container {
+  height: 250px;
+  overflow: auto;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  height: 20px;
+  position: absolute;
+  bottom: 170px;
+}
+.right_arrow {
+  cursor: pointer;
+  border: none;
+}
+
 .info {
   flex: 1;
   background-color: black;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./DevTalk.module.css";
 
 const DevTalks = () => {
@@ -8,7 +9,9 @@ const DevTalks = () => {
         <div className={styles.devTalks}>
           <h1>What about you?</h1>
           <div className={styles.questions__container}>
-            <p>Would you attend Devtalks and maybe also organize your own?</p>
+            <p className={styles.question}>
+              Would you attend Devtalks and maybe also organize your own?
+            </p>
 
             <div className={styles.radio_btn}>
               <input
@@ -27,13 +30,34 @@ const DevTalks = () => {
               <label>No</label>
             </div>
 
-            <p>What would you speak about at Devtalk?</p>
+            <p className={styles.question}>
+              What would you speak about at Devtalk?
+            </p>
 
             <textarea className={styles.textarea1}>I would...</textarea>
 
-            <p>Tell us something special</p>
+            <p className={styles.question}>Tell us something special</p>
 
             <textarea className={styles.textarea2}>I...</textarea>
+          </div>
+          <div className={styles.pagination}>
+            <Link to="/tech-skills">
+              <img
+                src="/assets/Previous.png"
+                className={styles.left_arrow}
+                alt=" arrow img"
+              />
+            </Link>
+            <img src="/assets/Ellipse1.png" alt="  img" />
+            <img src="/assets/Ellipse1.png" alt="  img" />
+            <img src="/assets/Ellipse1.png" alt="  img" />
+            <img src="/assets/Ellipse2.png" alt="  img" />
+            <img src="/assets/Ellipse2.png" alt="  img" />
+            <Link to="/devtalks">
+              <button type="submit" className={styles.right_arrow}>
+                <img src="/assets/Next.png" alt=" arrow img" />
+              </button>
+            </Link>
           </div>
         </div>
         <div className={styles.info}>

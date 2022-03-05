@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  width: 1920px;
+  height: 2077px;
+  padding-left: 340px;
+}
+.container h1 {
+  font-size: 56px;
+  color: #ffffff;
+  font-family: "Rowdies", cursive;
+  font-weight: bold;
+  margin: 120px 0 80px 20px;
+  letter-spacing: 3px;
+}
+.accordion_item {
+  display: flex;
+  flex-direction: column;
+  width: 1154px;
+  height: 1594px;
+}
+.accordion_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  background-color: red;
+  padding: 0 20px 0 20px;
+}
+.accordion_content {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 60px 65px 220px 150px;
+  font-family: "Montserrat", sans-serif;
+}
+.about_section {
+  display: flex;
+}
+.about_section h2 {
+  font-size: 18px;
+  color: red;
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+}
+.personal_info {
+  flex: 1;
+}
+.skillset {
+  flex: 1;
+}

@@ -4,10 +4,10 @@
   height: 1380px;
   border: 1px solid black;
 }
-p {
+.question {
   font-size: 18px;
   font-family: "Montserrat", sans-serif;
-  margin-top: 50px;
+  margin: 30px 0 30px 0;
 }
 .covidInfo {
   flex: 1;
@@ -19,7 +19,7 @@ p {
   color: red;
   font-size: 64px;
   font-family: "Rowdies", cursive;
-  margin: 110px 0 105px 20px;
+  margin: 90px 0 70px 20px;
   text-align: center;
 }
 .questions__container {
@@ -27,11 +27,11 @@ p {
 }
 .radio_btn {
   display: flex;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 .radio__input {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin-right: 10px;
   display: block;
 }
@@ -39,7 +39,6 @@ p {
 .date__input {
   width: 455px;
   height: 54px;
-  margin-top: 30px;
   border: 1px solid #454545;
   padding: 10px;
 }
@@ -48,10 +47,21 @@ p {
 }
 .calendar__img {
   position: absolute;
-  top: 47px;
+  top: 20px;
   right: 44.52%;
   width: 15px;
   height: 15px;
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  height: 20px;
+  margin: 110px 0 0 170px;
+}
+.right_arrow {
+  cursor: pointer;
+  border: none;
 }
 .info {
   flex: 1;
