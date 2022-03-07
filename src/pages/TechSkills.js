@@ -8,7 +8,15 @@ const TechSkills = () => {
   const [language, setLanguage] = useState("");
   const [experience, setExperience] = useState("");
   const [skills, setSkills] = useState([]);
-
+  const [formIsValid, setformIsValid] = useState(false);
+  useEffect(() => {
+    if (language !== "" && experience !== "") {
+      setformIsValid(true);
+    } else {
+      setformIsValid(false);
+    }
+  }, [language, experience]);
+  console.log(formIsValid);
   const getUsers = async () => {
     const response = await fetch("https://bootcamp-2022.devtest.ge/api/skills");
     const result = await response.json();
@@ -17,14 +25,16 @@ const TechSkills = () => {
   useEffect(() => {
     getUsers();
   }, []);
+  const dataId = data.map((item) => item);
+  // console.log(dataId);
+  // console.log(data);
+
   const langChangeHandler = (event) => {
     setLanguage(() => event.target.value);
-    localStorage.setItem("skill", event.target.value);
   };
 
   const expChangeHandler = (event) => {
     setExperience(event.target.value);
-    localStorage.setItem("experience", event.target.value);
   };
 
   const addSkill = () => {
@@ -32,18 +42,21 @@ const TechSkills = () => {
       const newSkill = {
         language,
         experience,
-        id: Math.trunc(Math.random() * 20000),
+        id: dataId,
       };
+      console.log(newSkill);
 
       setSkills([newSkill, ...skills]);
-      setLanguage("");
-      setExperience("");
+      // setLanguage("");
+      // setExperience("");
     }
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
     addSkill();
+    localStorage.setItem("id", dataId);
+    localStorage.setItem("experience", experience);
   };
 
   return (
@@ -90,16 +103,24 @@ const TechSkills = () => {
           <Link to="/personal-info">
             <img src="/assets/Previous.png" alt=" arrow img" />
           </Link>
+          <Link to="/personal-info">
+            <img src="/assets/Ellipse1.png" alt="  img" />
+          </Link>
           <img src="/assets/Ellipse1.png" alt="  img" />
-          <img src="/assets/Ellipse1.png" alt="  img" />
           <img src="/assets/Ellipse2.png" alt="  img" />
           <img src="/assets/Ellipse2.png" alt="  img" />
           <img src="/assets/Ellipse2.png" alt="  img" />
-          <Link to="/covid-info">
+          {formIsValid ? (
+            <Link to="/covid-info">
+              <button type="submit" className={styles.right_arrow}>
+                <img src="/assets/Next.png" alt=" arrow img" />
+              </button>
+            </Link>
+          ) : (
             <button className={styles.right_arrow}>
               <img src="/assets/Next.png" alt=" arrow img" />
             </button>
-          </Link>
+          )}
         </div>
       </form>
 

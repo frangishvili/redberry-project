@@ -13,6 +13,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .covidInfo h1 {
@@ -55,9 +56,11 @@
 .pagination {
   display: flex;
   justify-content: space-between;
+  position: absolute;
   width: 230px;
   height: 20px;
-  margin: 110px 0 0 170px;
+  margin: 110px 0 0 320px;
+  bottom: 80px;
 }
 .right_arrow {
   cursor: pointer;

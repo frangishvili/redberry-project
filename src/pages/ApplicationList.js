@@ -11,7 +11,7 @@ const App = () => {
       voluptatem.`,
   };
 
-  const { title, content } = accordionData;
+  const { title } = accordionData;
 
   return (
     <React.Fragment>

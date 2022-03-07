@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./PersonalInfo.module.css";
 
@@ -7,12 +7,24 @@ function PersonalInfo() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-  const [inputIsValid, setInputIsValid] = useState({
-    name: true,
-    lastName: true,
-    email: true,
-    number: true,
-  });
+  const [nameIsValid, setNameIsValid] = useState(true);
+  const [lastNameIsValid, setLastNameIsValid] = useState(true);
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [numberIsValid, setNumberIsValid] = useState(true);
+  const [formIsValid, setformIsValid] = useState(false);
+
+  const unvalidName = name.trim().length <= 2;
+  const unvalidLastName = lastName.trim().length <= 2;
+  const unvalidEmail = !email.includes("@");
+  const unvalidNumber = number.slice(0, 5) !== "+9955" || number.length !== 11;
+  useEffect(() => {
+    if (!unvalidName && !unvalidLastName && !unvalidEmail && !unvalidNumber) {
+      setformIsValid(true);
+    } else {
+      setformIsValid(false);
+    }
+  }, [unvalidName, unvalidLastName, unvalidEmail, unvalidNumber, formIsValid]);
+  console.log(formIsValid);
 
   const nameHandeler = (event) => {
     event.preventDefault();
@@ -25,34 +37,41 @@ function PersonalInfo() {
   const emailHandeler = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
-    localStorage.setItem("email", event.target.value);
   };
   const numberHandeler = (event) => {
     event.preventDefault();
     setNumber(event.target.value);
-    localStorage.setItem("number", event.target.value);
   };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    // const unvalidName =
-    const unvalidLastName = lastName.trim().length <= 2;
-    const unvalidEmail = email.includes("@");
-    const unvalidNumber = number.slice(0, 4) === "+9955";
-    if (name.trim().length <= 2) {
-      setInputIsValid({ ...inputIsValid, name: false });
-      console.log(inputIsValid);
-      return;
+
+    if (unvalidName) {
+      setNameIsValid(false);
     } else {
       localStorage.setItem("name", name);
-      setInputIsValid({ ...inputIsValid, name: true });
+      setNameIsValid(true);
     }
-    // if (unvalidLastName) {
-    //   setInputIsValid({ ...inputIsValid, lastName: false });
-    //   console.log(inputIsValid);
-    // } else {
-    //   localStorage.setItem("lastname", lastName);
-    //   setInputIsValid({ ...inputIsValid, lastName: true });
-    // }
+    if (unvalidLastName) {
+      setLastNameIsValid(false);
+    } else {
+      localStorage.setItem("lastname", lastName);
+      setLastNameIsValid(true);
+    }
+
+    if (unvalidEmail) {
+      setEmailIsValid(false);
+    } else {
+      localStorage.setItem("email", email);
+      setEmailIsValid(true);
+    }
+
+    if (unvalidNumber) {
+      setNumberIsValid(false);
+    } else {
+      localStorage.setItem("phoneNumber", number);
+      setNumberIsValid(true);
+    }
   };
 
   return (
@@ -67,7 +86,7 @@ function PersonalInfo() {
             placeholder="First Name"
             required
           />
-          {!inputIsValid.name && (
+          {!nameIsValid && (
             <p className={styles.error}>
               first name should include 3 or more characters
             </p>
@@ -78,8 +97,9 @@ function PersonalInfo() {
             className={styles.input}
             onChange={lastNameHandeler}
             placeholder="Last Name"
+            required
           />
-          {!inputIsValid.lastName && (
+          {!lastNameIsValid && (
             <p className={styles.error}>
               last name should include 3 or more characters
             </p>
@@ -90,14 +110,21 @@ function PersonalInfo() {
             className={styles.input}
             onChange={emailHandeler}
             placeholder="E Mail"
+            required
           />
+          {!emailIsValid && (
+            <p className={styles.error}>please enter a valid email</p>
+          )}
           <input
-            type="number"
+            type="text"
             value={number}
             className={styles.input}
             onChange={numberHandeler}
             placeholder="+995 5_ _ _ _"
           />
+          {!numberIsValid && (
+            <p className={styles.error}>please enter a valid number</p>
+          )}
           <div className={styles.pagination}>
             <Link to="/welcome">
               <img
@@ -111,11 +138,17 @@ function PersonalInfo() {
             <img src="/assets/Ellipse2.png" alt="  img" />
             <img src="/assets/Ellipse2.png" alt="  img" />
             <img src="/assets/Ellipse2.png" alt="  img" />
-            <Link to="/tech-skills">
+            {formIsValid ? (
+              <Link to="/tech-skills">
+                <button type="submit" className={styles.right_arrow}>
+                  <img src="/assets/Next.png" alt=" arrow img" />
+                </button>
+              </Link>
+            ) : (
               <button type="submit" className={styles.right_arrow}>
                 <img src="/assets/Next.png" alt=" arrow img" />
               </button>
-            </Link>
+            )}
           </div>
         </form>
       </div>
