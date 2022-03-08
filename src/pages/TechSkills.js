@@ -16,7 +16,7 @@ const TechSkills = () => {
       setformIsValid(false);
     }
   }, [language, experience]);
-  console.log(formIsValid);
+
   const getUsers = async () => {
     const response = await fetch("https://bootcamp-2022.devtest.ge/api/skills");
     const result = await response.json();
@@ -25,12 +25,14 @@ const TechSkills = () => {
   useEffect(() => {
     getUsers();
   }, []);
-  const dataId = data.map((item) => item);
-  // console.log(dataId);
-  // console.log(data);
+  const skill = skills.map((item) => item);
+
+  console.log(skill);
+  console.log(skill.id);
 
   const langChangeHandler = (event) => {
     setLanguage(() => event.target.value);
+    console.log(event.target.value);
   };
 
   const expChangeHandler = (event) => {
@@ -38,25 +40,25 @@ const TechSkills = () => {
   };
 
   const addSkill = () => {
-    if (language !== "") {
+    if (language !== "" && experience > 0) {
       const newSkill = {
         language,
         experience,
-        id: dataId,
+        id: language.slice(0, 1),
       };
       console.log(newSkill);
 
       setSkills([newSkill, ...skills]);
-      // setLanguage("");
-      // setExperience("");
+      setLanguage("");
+      setExperience("");
     }
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
     addSkill();
-    localStorage.setItem("id", dataId);
     localStorage.setItem("experience", experience);
+    localStorage.setItem("id", language.slice(0, 1));
   };
 
   return (
@@ -68,9 +70,11 @@ const TechSkills = () => {
           value={language}
           className="select"
         >
-          <option value="">Skills</option>
+          <option value="" disabled selected hidden>
+            Skills
+          </option>
           {data.map((item) => (
-            <option value={item.title} key={item.id}>
+            <option value={item.id + item.title} key={item.id}>
               {item.title}
             </option>
           ))}

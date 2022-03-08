@@ -28,7 +28,6 @@
 }
 .radio_btn {
   display: flex;
-  /* margin-top: 30px; */
 }
 .radio__input {
   width: 15px;

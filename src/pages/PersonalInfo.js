@@ -16,7 +16,7 @@ function PersonalInfo() {
   const unvalidName = name.trim().length <= 2;
   const unvalidLastName = lastName.trim().length <= 2;
   const unvalidEmail = !email.includes("@");
-  const unvalidNumber = number.slice(0, 5) !== "+9955" || number.length !== 11;
+  const unvalidNumber = number.slice(0, 5) !== "+9955" || number.length !== 13;
   useEffect(() => {
     if (!unvalidName && !unvalidLastName && !unvalidEmail && !unvalidNumber) {
       setformIsValid(true);
@@ -24,23 +24,26 @@ function PersonalInfo() {
       setformIsValid(false);
     }
   }, [unvalidName, unvalidLastName, unvalidEmail, unvalidNumber, formIsValid]);
-  console.log(formIsValid);
 
   const nameHandeler = (event) => {
     event.preventDefault();
     setName(() => event.target.value);
+    localStorage.setItem("name", event.target.value);
   };
   const lastNameHandeler = (event) => {
     event.preventDefault();
     setLastName(() => event.target.value);
+    localStorage.setItem("lastname", event.target.value);
   };
   const emailHandeler = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
+    localStorage.setItem("email", event.target.value);
   };
   const numberHandeler = (event) => {
     event.preventDefault();
     setNumber(event.target.value);
+    localStorage.setItem("phoneNumber", event.target.value);
   };
 
   const submitHandler = (event) => {
@@ -49,27 +52,24 @@ function PersonalInfo() {
     if (unvalidName) {
       setNameIsValid(false);
     } else {
-      localStorage.setItem("name", name);
       setNameIsValid(true);
     }
     if (unvalidLastName) {
       setLastNameIsValid(false);
     } else {
-      localStorage.setItem("lastname", lastName);
       setLastNameIsValid(true);
     }
 
     if (unvalidEmail) {
       setEmailIsValid(false);
     } else {
-      localStorage.setItem("email", email);
       setEmailIsValid(true);
+      console.log(email);
     }
 
     if (unvalidNumber) {
       setNumberIsValid(false);
     } else {
-      localStorage.setItem("phoneNumber", number);
       setNumberIsValid(true);
     }
   };
