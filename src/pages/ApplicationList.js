@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ApplicationList.module.css";
 
 const App = () => {
@@ -12,6 +12,24 @@ const App = () => {
   };
 
   const { title } = accordionData;
+
+  const getUsers = async () => {
+    const response = await fetch(
+      "https://bootcamp-2022.devtest.ge/api/application/json",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <React.Fragment>

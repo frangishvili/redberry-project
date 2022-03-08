@@ -4,7 +4,7 @@ import styles from "./Submit.module.css";
 
 const Submit = () => {
   const userData = {
-    token: "84e2b863-774d-46c1-ad33-a3c43f5ab33e",
+    token: "e037953c-4400-4949-ad7d-0e05513d2151",
     first_name: localStorage.getItem("name"),
     last_name: localStorage.getItem("lastname"),
     email: localStorage.getItem("email"),
@@ -32,30 +32,27 @@ const Submit = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log("adasd");
     fetch("https://bootcamp-2022.devtest.ge/api/application", {
       method: "POST",
-      body: userData,
+      body: JSON.stringify(userData),
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Credentials": "true",
       },
-    }).then((res) => console.log(res).catch((err) => console.log(err)));
+    })
+      .then((res) => res.json())
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   };
-  const getUsersData = async () => {
-    const response = await fetch(
-      "https://bootcamp-2022.devtest.ge/api/applications"
-    );
-    const result = await response.json();
-    console.log(result);
-  };
+
   return (
     <div className={styles.container}>
-      <button type="submit" className={styles.button} onSubmit={submitHandler}>
+      <button type="submit" className={styles.button} onClick={submitHandler}>
         Submit
       </button>
-      <button type="submit" className={styles.button} onSubmit={getUsersData}>
-        fetch
-      </button>
-
       <Link to="/devtalks" className={styles.aplications__link}>
         go back
       </Link>

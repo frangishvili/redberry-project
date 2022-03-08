@@ -46,6 +46,7 @@ const Covid = () => {
   }, [workPreference, covid, hadCovidAt, vaccinated, vaccinatedAt]);
   const workPreferenceHander = (event) => {
     setWorkPreference(event.target.value);
+    console.log(event.target.value);
 
     localStorage.setItem("work_preference", event.target.value);
   };
@@ -54,7 +55,7 @@ const Covid = () => {
     console.log(typeof event.target.value);
     localStorage.setItem("had_covid", event.target.value);
   };
-  console.log(typeof covid);
+
   const hadCovidAtHander = (event) => {
     setHadCovidAt(event.target.value);
     localStorage.setItem("had_covid_at", event.target.value);
@@ -85,7 +86,7 @@ const Covid = () => {
               name="radio"
               className={styles.radio__input}
               onChange={workPreferenceHander}
-              value="From Sairme Office"
+              value="from_office"
               required
             />
             <label>From Sairme Office</label>
@@ -96,7 +97,7 @@ const Covid = () => {
               name="radio"
               className={styles.radio__input}
               onChange={workPreferenceHander}
-              value="From home"
+              value="from_home"
               required
             />
             <label>From Home</label>
@@ -107,7 +108,7 @@ const Covid = () => {
               name="radio"
               className={styles.radio__input}
               onChange={workPreferenceHander}
-              value="Hybrid"
+              value="hybrid"
               required
             />
             <label>Hybrid</label>

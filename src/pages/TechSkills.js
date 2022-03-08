@@ -10,12 +10,14 @@ const TechSkills = () => {
   const [skills, setSkills] = useState([]);
   const [formIsValid, setformIsValid] = useState(false);
   useEffect(() => {
-    if (language !== "" && experience !== "") {
+    if (skills !== []) {
       setformIsValid(true);
+
+      console.log(formIsValid);
     } else {
       setformIsValid(false);
     }
-  }, [language, experience]);
+  }, [skills, formIsValid]);
 
   const getUsers = async () => {
     const response = await fetch("https://bootcamp-2022.devtest.ge/api/skills");
@@ -28,7 +30,6 @@ const TechSkills = () => {
   const skill = skills.map((item) => item);
 
   console.log(skill);
-  console.log(skill.id);
 
   const langChangeHandler = (event) => {
     setLanguage(() => event.target.value);
@@ -70,7 +71,7 @@ const TechSkills = () => {
           value={language}
           className="select"
         >
-          <option value="" disabled selected hidden>
+          <option value="" disabled hidden>
             Skills
           </option>
           {data.map((item) => (
@@ -102,7 +103,6 @@ const TechSkills = () => {
             setSkills={setSkills}
           />
         </div>
-        <Link to="/personal-info"></Link>
         <div className={styles.pagination}>
           <Link to="/personal-info">
             <img src="/assets/Previous.png" alt=" arrow img" />
