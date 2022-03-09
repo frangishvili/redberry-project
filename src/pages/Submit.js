@@ -27,7 +27,7 @@ const Submit = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    fetch("https://bootcamp-2022.devtest.ge/api/applicatio", {
+    fetch("https://bootcamp-2022.devtest.ge/api/application", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
