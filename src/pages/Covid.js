@@ -9,7 +9,6 @@ const Covid = () => {
   const [vaccinated, setVaccinated] = useState("");
   const [vaccinatedAt, setVaccinatedAt] = useState("");
   const [formIsValid, setFormIsValid] = useState("");
-
   const ref1 = useRef();
   const ref2 = useRef();
 
@@ -46,13 +45,11 @@ const Covid = () => {
   }, [workPreference, covid, hadCovidAt, vaccinated, vaccinatedAt]);
   const workPreferenceHander = (event) => {
     setWorkPreference(event.target.value);
-    console.log(event.target.value);
 
     localStorage.setItem("work_preference", event.target.value);
   };
   const covidHandler = (event) => {
     setCovid(event.target.value);
-    console.log(typeof event.target.value);
     localStorage.setItem("had_covid", event.target.value);
   };
 

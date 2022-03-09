@@ -7,6 +7,7 @@ const DevTalks = () => {
   const [topic, setTopic] = useState("");
   const [special, setSpecial] = useState("");
   const [formIsValid, setFormIsValid] = useState("");
+
   useEffect(() => {
     if (devTalk === "false" && special !== "") {
       setFormIsValid(true);

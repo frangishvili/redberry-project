@@ -8,16 +8,16 @@ const TechSkills = () => {
   const [language, setLanguage] = useState("");
   const [experience, setExperience] = useState("");
   const [skills, setSkills] = useState([]);
+  const [localSkills, setLocalSkills] = useState([]);
   const [formIsValid, setformIsValid] = useState(false);
-  useEffect(() => {
-    if (skills !== []) {
-      setformIsValid(true);
 
-      console.log(formIsValid);
+  useEffect(() => {
+    if (skills.length > 0) {
+      setformIsValid(true);
     } else {
       setformIsValid(false);
     }
-  }, [skills, formIsValid]);
+  }, [skills]);
 
   const getUsers = async () => {
     const response = await fetch("https://bootcamp-2022.devtest.ge/api/skills");
@@ -27,39 +27,40 @@ const TechSkills = () => {
   useEffect(() => {
     getUsers();
   }, []);
-  const skill = skills.map((item) => item);
-
-  console.log(skill);
 
   const langChangeHandler = (event) => {
     setLanguage(() => event.target.value);
-    console.log(event.target.value);
   };
 
   const expChangeHandler = (event) => {
     setExperience(event.target.value);
   };
+  // let userSkills = [];
 
   const addSkill = () => {
     if (language !== "" && experience > 0) {
       const newSkill = {
-        language,
+        language: language.slice(1),
         experience,
         id: language.slice(0, 1),
       };
-      console.log(newSkill);
 
       setSkills([newSkill, ...skills]);
+      setLocalSkills([
+        { id: Number(language.slice(0, 1)), experience: Number(experience) },
+        ...localSkills,
+      ]);
+
       setLanguage("");
       setExperience("");
     }
   };
 
+  localStorage.setItem("skills", JSON.stringify(localSkills));
+
   const submitHandler = (event) => {
     event.preventDefault();
     addSkill();
-    localStorage.setItem("experience", experience);
-    localStorage.setItem("id", language.slice(0, 1));
   };
 
   return (

@@ -32,11 +32,11 @@ function App() {
         <Route path="/devtalks">
           <DevTalks />
         </Route>
-        <Route path="/thancks-page">
-          <Thancks />
-        </Route>
         <Route path="/submit">
           <Submit />
+        </Route>
+        <Route path="/thancks-page">
+          <Thancks />
         </Route>
         <Route path="/applications">
           <ApplicationList />

@@ -1,14 +1,25 @@
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 1920px;
   height: 1080px;
   border: 1px solid black;
 }
 .skills {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -46,7 +57,11 @@ input {
   overflow: auto;
 }
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 230px;
   height: 20px;
@@ -59,6 +74,8 @@ input {
 }
 
 .info {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   background-color: black;
 }

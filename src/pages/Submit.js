@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Submit.module.css";
+import Thanck from "./Thancks";
 
 const Submit = () => {
+  const [showPage, setShowPage] = useState(false);
   const userData = {
-    token: "e037953c-4400-4949-ad7d-0e05513d2151",
+    token: "5513eb26-fa8f-48ed-b969-1ceb5f9a9ee7",
     first_name: localStorage.getItem("name"),
     last_name: localStorage.getItem("lastname"),
     email: localStorage.getItem("email"),
     phone: localStorage.getItem("phoneNumber"),
-    skills: [
-      {
-        id: localStorage.getItem("id"),
-        experience: localStorage.getItem("experience"),
-      },
-    ],
+    skills: JSON.parse(localStorage.getItem("skills")),
     work_preference: localStorage.getItem("work_preference"),
     had_covid: Boolean(localStorage.getItem("had_covid")),
     had_covid_at: new Date(localStorage.getItem("had_covid_at")),
@@ -27,13 +24,10 @@ const Submit = () => {
     something_special: localStorage.getItem("something_special"),
   };
 
-  console.log(userData);
-  console.log(typeof Boolean(localStorage.getItem("will_organize_devtalk")));
-
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("adasd");
-    fetch("https://bootcamp-2022.devtest.ge/api/application", {
+
+    fetch("https://bootcamp-2022.devtest.ge/api/applicatio", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
@@ -46,13 +40,19 @@ const Submit = () => {
       .then((res) => res.json())
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err));
+
+    localStorage.clear();
+    setShowPage(true);
   };
 
-  return (
+  return showPage ? (
+    <Thanck />
+  ) : (
     <div className={styles.container}>
       <button type="submit" className={styles.button} onClick={submitHandler}>
         Submit
       </button>
+
       <Link to="/devtalks" className={styles.aplications__link}>
         go back
       </Link>
@@ -61,3 +61,10 @@ const Submit = () => {
 };
 
 export default Submit;
+
+// skills: [
+//   {
+//     id: localStorage.getItem("id"),
+//     experience: localStorage.getItem("experience"),
+//   },
+// ],

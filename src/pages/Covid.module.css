@@ -1,4 +1,6 @@
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 1920px;
   height: 1380px;
@@ -10,8 +12,15 @@
   margin: 30px 0 30px 0;
 }
 .covidInfo {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
 }
@@ -27,6 +36,8 @@
   margin-left: 165px;
 }
 .radio_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .radio__input {
@@ -53,7 +64,11 @@
   height: 15px;
 }
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   position: absolute;
   width: 230px;
@@ -66,6 +81,8 @@
   border: none;
 }
 .info {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   background-color: black;
 }
